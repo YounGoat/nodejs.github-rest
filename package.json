@@ -1,0 +1,31 @@
+{
+    "bin": {
+        "github": "bin/github.js"
+    },
+    "dependencies": {
+        "co": "^4.6.0",
+        "htp": "^0.2.0",
+        "noda": "^0.1.2"
+    },
+    "devDependencies": {},
+    "directories": {},
+    "scripts": {},
+    "name": "github-rest",
+    "version": "0.0.1",
+    "main": "index.js",
+    "keywords": [
+        "github",
+        "rest"
+    ],
+    "homepage": "https://github.com/YounGoat/nodejs.github-rest",
+    "description": "GitHub API based on GitHub REST API v3.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/YounGoat/nodejs.github-rest.git"
+    },
+    "author": {
+        "name": "YounGoat",
+        "email": "youngoat@163.com",
+        "url": "https://youngoat.github.io"
+    }
+}
