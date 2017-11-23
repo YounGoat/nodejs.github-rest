@@ -1,6 +1,18 @@
 #   github-rest
 __GitHub API based on GitHub REST API v3.__
 
+##	Table of contents
+
+*	[Get Started](#get-started)
+*	[API](#api)
+* 	[Examples](#examples)
+*	[References](#references)
+
+##	Links
+
+*	[CHANGE LOG](./CHANGELOG.md)
+*	[Homepage](https://github.com/YounGoat/nodejs.github-rest)
+
 ##  Get Started
 
 ```javascript
@@ -22,7 +34,7 @@ createRepository(options)
 	;
 ```
 
-##  APIs
+##  API
 
 All methods are asynchronous and will return instances of `Promise`. Hereafter, *response* means what to be obtained in `.then((response) => { /* ... */ })`.
 
@@ -71,7 +83,7 @@ Return metadata of the user who is the owner of the token.
 *	[getRepository](./test/getRepository.js)
 *	[whoami](./test/whoami.js)
 
-##  REFERENCES
+##  References
 
 *   [GraphQL API v4: Forming Calls with GraphQL](https://developer.github.com/v4/guides/forming-calls)
 *   [Creating a personal access token for the command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)

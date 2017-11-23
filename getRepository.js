@@ -33,7 +33,6 @@ function run(options) {
         let urlname = `/repos/${username}/${options.name}`;
         let repo = yield agent.get(urlname);
 
-        if (!repo) throw new Error(`repository not found: ${username}/${options.name}`);
         return repo;
     });
 };
