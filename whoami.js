@@ -4,17 +4,21 @@ const MODULE_REQUIRE = 1
     /* built-in */
     
     /* NPM */
-    , htp = require('htp')
     , noda = require('noda')
     
     /* in-package */
-    , Agent = noda.inRequire('lib/agent')
+    , getGithubAgent = noda.inRequire('lib/getGithubAgent')
     ;
 
-function run(options) {
-    let agent = new Agent(options.token);
+/**
+ * @param {Object}       options
+ * @param {string}       options.token
+ * @return {Promise}
+ */
+function whoami(options) {
+    let _agent = getGithubAgent.call(this, options);
     let urlname = '/user';
-    return agent.get(urlname);
+    return _agent.get(urlname);
 };
 
-module.exports = run;
+module.exports = whoami;

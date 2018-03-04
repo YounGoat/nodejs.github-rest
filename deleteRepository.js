@@ -1,3 +1,9 @@
+/**
+ * @see 
+ *   REST API v3: Repositories, xiv. Delete a repository
+ *   https://developer.github.com/v3/repos/#delete-a-repository
+ */
+
 'use strict';
 
 const MODULE_REQUIRE = 1
@@ -5,37 +11,35 @@ const MODULE_REQUIRE = 1
 
     /* NPM */
     , co = require('co')
-    , htp = require('htp')
     , noda = require('noda')
 
     /* in-package */
-    , Agent = noda.inRequire('lib/agent')
+    , getGithubAgent = noda.inRequire('lib/getGithubAgent')
     , whoami = noda.inRequire('./whoami')
     ;
 
 /**
- * @param {string}  options.token
- * @param {string} [options.username]  username of repository's owner
- * @param {string}  options.name       name of repository to be deleted
+ * @param {string}       options.token
+ * @param {string}      [options.username]  username of repository's owner
+ * @param {string}       options.name       name of repository to be deleted
+ *
+ * @return {Promise}
  */
-function run(options) {
-    return co(function*() {
-        if (!options.token) {
-            throw new Error('expected option not found: token');
-        }
+function deleteRepository(options) {
+    let _agent = getGithubAgent(options);
 
+    return co(function*() {
         // Get username from options or via owner of current token.
         let username = options.username;
         if (!username) {
-            let user = yield whoami({ token: options.token });
+            let user = yield whoami(options);
             username = user.login;
         }
         
-        let agent = new Agent(options.token);
         let urlname = `/repos/${username}/${options.name}`;
-        let ret = yield agent.delete(urlname);
+        let ret = yield _agent.delete(urlname);
         return ret;
     });
 };
 
-module.exports = run;
+module.exports = deleteRepository;

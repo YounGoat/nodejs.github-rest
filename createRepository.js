@@ -1,3 +1,9 @@
+/**
+ * @see
+ *   REST API v3: Repositories, v. Create
+ *   https://developer.github.com/v3/repos/#create
+ */
+
 'use strict';
 
 const MODULE_REQUIRE = 1
@@ -8,8 +14,7 @@ const MODULE_REQUIRE = 1
     , noda = require('noda')
     
     /* in-package */
-    , Agent = noda.inRequire('lib/agent')
-    , object2 = noda.inRequire('lib/object2')
+    , getGithubAgent = noda.inRequire('lib/getGithubAgent')
     ;
 
 /** 
@@ -17,9 +22,11 @@ const MODULE_REQUIRE = 1
  * @param {string} [options.orgname] 
  * @param {string}  options.name
  * See https://developer.github.com/v3/repos/#create for other options.
+ * 
+ * @return {Promise}
  */
-function run(options) {
-    let agent = new Agent(options.token);
+function createRepository(options) {
+    let _agent = getGithubAgent(options);
 
     let urlname;
     if (options.orgname) {
@@ -34,7 +41,7 @@ function run(options) {
     delete params.token;
     delete params.orgname;
     
-    return agent.post(urlname, params);
-};
+    return _agent.post(urlname, params);
+}
 
-module.exports = run;
+module.exports = createRepository;

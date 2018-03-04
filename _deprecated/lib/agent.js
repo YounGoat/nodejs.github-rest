@@ -12,19 +12,19 @@ const MODULE_REQUIRE = 1
 
 function request(method, pathname, body) {
     let headers = {};
-    headers['Accept'] = 'application/vnd.github.v3+json';
+    headers['Accept'] = conf.mime;
+    // headers['Accept'] = 'application/vnd.github.mercy-preview+json';
 
     if (this.token) {
         headers['Authorization'] = `token ${this.token}`;
     }
     
     let urlname = `${conf.endpoint}${pathname}`;
-    
     let p = body ? htp(method, urlname, headers, body) : htp(method, urlname, headers);
-
     return new Promise((resolve, reject) => {
         p
             .then(response => {
+                console.log(response.statusCode);
                 if (200 <= response.statusCode && response.statusCode < 300) {
                     resolve(response.body);
                 }

@@ -4,19 +4,22 @@
     },
     "dependencies": {
         "co": "^4.6.0",
-        "htp": "^0.2.0",
-        "noda": "^0.1.2"
+        "htp": "^0.6.2",
+        "noda": "^0.3.0"
     },
     "devDependencies": {},
     "directories": {},
     "scripts": {},
     "name": "github-rest",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "main": "index.js",
     "keywords": [
         "github",
         "rest"
     ],
+    "engines": {
+        "node": ">=6"
+    },
     "homepage": "https://github.com/YounGoat/nodejs.github-rest",
     "description": "GitHub API based on GitHub REST API v3.",
     "repository": {
